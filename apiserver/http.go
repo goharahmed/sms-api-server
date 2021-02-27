@@ -56,6 +56,7 @@ func (h *Handler) init() {
 func (h *Handler) Register(mux *http.ServeMux) <-chan smpp.ConnStatus {
 	h.init()
 	p := urlprefix(h)
+
 	mux.Handle(p+"/send", h.send())
 	mux.Handle(p+"/query", h.query())
 	mux.Handle(p+"/sse", h.sse())
